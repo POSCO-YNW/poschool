@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
-    <artifactId>poschool-enrollmentcource</artifactId>
+    <artifactId>poschool-enrollmentcourse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>poschool-enrollmentcource</name>

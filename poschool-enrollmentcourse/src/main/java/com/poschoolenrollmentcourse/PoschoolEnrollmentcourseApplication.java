@@ -1,13 +1,13 @@
-package com.poschoolenrollmentcource;
+package com.poschoolenrollmentcourse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PoschoolEnrollmentcourceApplication {
+public class PoschoolEnrollmentcourseApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PoschoolEnrollmentcourceApplication.class, args);
+        SpringApplication.run(PoschoolEnrollmentcourseApplication.class, args);
     }
 
 }
