@@ -10,11 +10,14 @@ import org.springframework.stereotype.Component;
 public class NotificationConsumer {
     private final ObjectMapper objectMapper;
 
-    @KafkaListener(topics = "order_state", groupId = "order")
+
+    @KafkaListener(topics = "enrollment_history_create", groupId = "notification")
     public void consume(String jsonObject) {
         try {
+
             //var order = objectMapper.readValue(jsonObject, OrderState.class);
             //orderService.state(order);
+
         } catch (Exception e) {
 
         }
