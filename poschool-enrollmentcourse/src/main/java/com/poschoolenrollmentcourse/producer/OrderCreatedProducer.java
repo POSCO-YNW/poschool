@@ -1,4 +1,4 @@
-package com.poschoolmain.student.producer;
+package com.poschoolenrollmentcourse.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

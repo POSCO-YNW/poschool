@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class OrderStateConsumer {
+public class EnrollmentStateConsumer {
 //    private final OrderService orderService;
     private final ObjectMapper objectMapper;
 

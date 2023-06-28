@@ -1,4 +1,4 @@
-package com.poschoolmain.student.repository.db;
+package com.poschoolenrollmentcourse.repository.db;
 
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
