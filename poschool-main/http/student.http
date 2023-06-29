@@ -22,7 +22,5 @@ DELETE http://localhost:8080/course
 Content-Type: application/json
 
 {
-  "studentId": 1,
-  "courseId": 1,
-  "semester": "2023학년 1학기"
+  "enrollmentId": 1
 }

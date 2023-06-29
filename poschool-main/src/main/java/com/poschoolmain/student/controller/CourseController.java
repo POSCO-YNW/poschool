@@ -43,10 +43,7 @@ public class CourseController {
     @DeleteMapping
     public ResponseEntity<Void> cancelCourse(@RequestBody HashMap<String, Object> map) {
         enrollmentKafkaService.requestCreateEnrollment(Enrollment.builder()
-                .studentId(Long.parseLong(map.get("studentId").toString()))
-                .courseId(Long.parseLong(map.get("courseId").toString()))
-                .enrollmentStatus(EnrollmentStatus.CANCEL.toString())
-                .semester(map.get("semester").toString())
+                .enrollmentId(Long.parseLong(map.get("enrollmentId").toString()))
                 .build());
         return ResponseEntity.ok().build();
     }
