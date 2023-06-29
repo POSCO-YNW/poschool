@@ -51,6 +51,18 @@ public class CourseRepository {
         return jdbcTemplate.query(sql, new courseMapper());
     }
 
+    public int updatePlusCurrentCount(Long courseId, int i) {
+        String sql = "UPDATE course SET current_count = current_count + ? WHERE course_id = ? AND current_count < max_count;";
+
+        return jdbcTemplate.update(sql, i, courseId);
+    }
+
+    public int updateMinusCurrentCount(Long courseId, int i) {
+        String sql = "UPDATE course SET current_count = current_count - ? WHERE course_id = ? AND current_count < max_count;";
+
+        return jdbcTemplate.update(sql, i, courseId);
+    }
+
     private static class courseMapper implements RowMapper<Course> {
         @Override
         public Course mapRow(ResultSet rs, int rowNum) throws SQLException {

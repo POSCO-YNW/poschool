@@ -1,7 +1,7 @@
-package com.poschoolmain.student.producer;
+package com.poschoolenrollmentcourse.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.poschoolmain.domain.Enrollment;
+import com.poschoolenrollmentcourse.domain.Enrollment;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -10,27 +10,25 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class EnrollmentCreatedProducer {
+public class EnrollmentHistoryCreatedProducer {
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper objectMapper;
-    private static final Logger logger = LoggerFactory.getLogger(EnrollmentCreatedProducer.class);
+    private static final Logger logger = LoggerFactory.getLogger(EnrollmentHistoryCreatedProducer.class);
 
     public void send(Enrollment enrollment) {
+        String jsonObject = null;
         try {
-            String jsonPayload = objectMapper.writeValueAsString(enrollment);
+            jsonObject = objectMapper.writeValueAsString(enrollment);
 
-            logger.info("producer: enrollment_create: " + jsonPayload);
+            logger.info("producer: enrollment_history_create: " + jsonObject);
 
-            kafkaTemplate.send("enrollment_create", jsonPayload);
+            kafkaTemplate.send("enrollment_history_create", jsonObject);
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }

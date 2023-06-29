@@ -25,4 +25,12 @@ public class CourseService {
     public Course findById(Long id) {
         return courseRepository.findById(id);
     }
+
+    public int updatePlusCurrentCount(Long courseId, int i) {
+        return courseRepository.updatePlusCurrentCount(courseId, i);
+    }
+
+    public int updateMinusCurrentCount(Long courseId, int i) {
+        return courseRepository.updateMinusCurrentCount(courseId, i);
+    }
 }
