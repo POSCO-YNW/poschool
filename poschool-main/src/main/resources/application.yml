@@ -14,3 +14,7 @@ spring:
         format_sql: true
     show-sql: true
     generate-ddl: false
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF
