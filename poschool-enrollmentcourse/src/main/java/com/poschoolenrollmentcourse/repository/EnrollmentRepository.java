@@ -68,7 +68,7 @@ public class EnrollmentRepository {
                     .studentId(rs.getLong("student_id"))
                     .courseId(rs.getLong("course_id"))
                     .semester(rs.getString("semester"))
-                    .enrollmentStatus(EnrollmentStatus.valueOf(rs.getString("enrollemnet_status")))
+                    .enrollmentStatus(EnrollmentStatus.valueOf(rs.getString("enrollment_status")))
                     .build();
         }
     }

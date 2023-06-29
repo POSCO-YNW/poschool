@@ -58,7 +58,12 @@ public class CourseRepository {
     }
 
     public int updateMinusCurrentCount(Long courseId, int i) {
-        String sql = "UPDATE course SET current_count = current_count - ? WHERE course_id = ? AND current_count < max_count;";
+        String sql = "UPDATE course " +
+                "SET current_count = CASE " +
+                "    WHEN current_count > 0 THEN current_count - ? " +
+                "    ELSE current_count " +
+                "    END " +
+                "WHERE course_id = ? AND current_count <= max_count;";
 
         return jdbcTemplate.update(sql, i, courseId);
     }
