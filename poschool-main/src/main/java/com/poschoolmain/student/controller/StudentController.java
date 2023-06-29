@@ -3,14 +3,16 @@ package com.poschoolmain.student.controller;
 import com.poschoolmain.student.domain.Student;
 import com.poschoolmain.student.service.StudentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("student")
+@RequestMapping("/student")
 public class StudentController {
     private final StudentService studentService;
 
@@ -20,16 +22,26 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String processSave(@RequestParam("studentName") String studentName,
-                              @RequestParam("studentNumber") String studentNumber) {
-
+    public ResponseEntity<String> processSave(@RequestBody HashMap<String, Object> map) {
         Long saveId = studentService.save(Student.builder()
-                .studentName(studentName)
-                .studentNumber(studentNumber)
+                .studentName(map.get("studentName").toString())
+                .studentNumber(map.get("studentNumber").toString())
                 .build());
 
-        return "redirect:/student/login";
+        return ResponseEntity.ok("Student saved successfully.");
     }
+
+//    @PostMapping("/save")
+//    public String processSave(@RequestParam("studentName") String studentName,
+//                              @RequestParam("studentNumber") String studentNumber) {
+//
+//        Long saveId = studentService.save(Student.builder()
+//                .studentName(studentName)
+//                .studentNumber(studentNumber)
+//                .build());
+//
+//        return "redirect:/student/login";
+//    }
 
     @GetMapping("/login")
     public String login() {

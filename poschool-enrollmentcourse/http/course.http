@@ -1,0 +1,8 @@
+### 과목 생성
+POST http://localhost:8081/api/course
+Content-Type: application/json
+
+{
+  "courseName": "현대사회",
+  "maxCount": 30
+}

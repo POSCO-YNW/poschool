@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 public class EnrollmentKafkaService {
     private final EnrollmentCreatedProducer enrollmentCreatedProducer;
 
-    public void addEnrollment(Long studentId, Long courseId) {
-        enrollmentCreatedProducer.
+    public void requestCreateEnrollment(Long studentId, Long courseId) {
+        enrollmentCreatedProducer.send(studentId, courseId);
     }
 }

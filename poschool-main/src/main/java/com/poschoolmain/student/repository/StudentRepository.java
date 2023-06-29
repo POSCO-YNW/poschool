@@ -17,6 +17,11 @@ import java.util.Objects;
 public class StudentRepository {
     private final JdbcTemplate jdbcTemplate;
 
+    public StudentRepository() {
+        DataSource dataSource = ConnectionManager.getDataSource();
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
     public Long save(Student student) {
         String sql = "INSERT INTO student (student_name, student_number) VALUES (?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -32,24 +37,19 @@ public class StudentRepository {
         return Objects.requireNonNull(keyHolder.getKey()).longValue();
     }
 
-    public StudentRepository() {
-        DataSource dataSource = ConnectionManager.getDataSource();
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
     public Student findById(Long studentId) {
         String sql = "SELECT * FROM student WHERE student_id = ?";
-        return jdbcTemplate.queryForObject(sql, new StudentMapper(), studentId);
+        return jdbcTemplate.queryForObject(sql, new studentMapper(), studentId);
     }
 
     public Student findByStudentNumber(String studentNumber) {
         String sql = "SELECT * FROM student WHERE student_number = ?";
-        return jdbcTemplate.queryForObject(sql, new StudentMapper(), studentNumber);
+        return jdbcTemplate.queryForObject(sql, new studentMapper(), studentNumber);
     }
 
     public List<Student> findAll() {
         String sql = "SELECT * FROM Student";
-        return jdbcTemplate.query(sql, new StudentMapper());
+        return jdbcTemplate.query(sql, new studentMapper());
     }
 
     public void update(Student student) {
@@ -63,7 +63,7 @@ public class StudentRepository {
         jdbcTemplate.update(sql, studentId);
     }
 
-    private static class StudentMapper implements RowMapper<Student> {
+    private static class studentMapper implements RowMapper<Student> {
         @Override
         public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
             Long studentId = rs.getLong("student_id");

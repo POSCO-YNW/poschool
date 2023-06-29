@@ -1,0 +1,18 @@
+### 학생 가입
+POST http://localhost:8080/student/save
+Content-Type: application/json
+
+{
+  "studentName": "dsad",
+  "studentNumber": "Asdsad"
+}
+
+### 과목 신청
+POST http://localhost:8080/course/add
+Content-Type: application/json
+
+{
+  "studentId": 1,
+  "courseId": 1
+}
+
