@@ -1,7 +1,7 @@
 package com.poschoolmain.student.domain.type;
 
 public enum EnrollmentStatus {
-    SUCCESS("성공"), FAIL("실패"), CANCEL("취소");
+    REQUEST("신청"), SUCCESS("성공"), FAIL("실패"), CANCEL("취소");
 
     private final String description;
 

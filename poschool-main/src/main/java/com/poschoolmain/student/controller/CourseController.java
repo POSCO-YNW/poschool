@@ -1,6 +1,8 @@
 package com.poschoolmain.student.controller;
 
 import com.poschoolmain.domain.Course;
+import com.poschoolmain.domain.Enrollment;
+import com.poschoolmain.student.domain.type.EnrollmentStatus;
 import com.poschoolmain.student.service.EnrollmentKafkaService;
 import lombok.RequiredArgsConstructor;
 import org.apache.http.HttpResponse;
@@ -26,6 +28,28 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
     private final EnrollmentKafkaService enrollmentKafkaService;
+
+    @PostMapping
+    public ResponseEntity<Void> addCourse(@RequestBody HashMap<String, Object> map) {
+        enrollmentKafkaService.requestCreateEnrollment(Enrollment.builder()
+                .studentId(Long.parseLong(map.get("studentId").toString()))
+                .courseId(Long.parseLong(map.get("courseId").toString()))
+                .enrollmentStatus(EnrollmentStatus.REQUEST.toString())
+                .semester(map.get("semester").toString())
+                .build());
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> cancelCourse(@RequestBody HashMap<String, Object> map) {
+        enrollmentKafkaService.requestCreateEnrollment(Enrollment.builder()
+                .studentId(Long.parseLong(map.get("studentId").toString()))
+                .courseId(Long.parseLong(map.get("courseId").toString()))
+                .enrollmentStatus(EnrollmentStatus.CANCEL.toString())
+                .semester(map.get("semester").toString())
+                .build());
+        return ResponseEntity.ok().build();
+    }
 
     @GetMapping("/list")
     public ResponseEntity<List<Course>> list() {
@@ -61,11 +85,5 @@ public class CourseController {
             e.printStackTrace();
             return ResponseEntity.status(500).build();
         }
-    }
-
-    @PostMapping("/add")
-    public ResponseEntity<Void> addCourse(@RequestBody HashMap<String, Object> map) {
-        enrollmentKafkaService.requestCreateEnrollment(Long.parseLong(map.get("studentId").toString()), Long.parseLong(map.get("courseId").toString()));
-        return ResponseEntity.ok().build();
     }
 }

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poschoolenrollmentcourse.domain.Enrollment;
 import com.poschoolenrollmentcourse.domain.type.EnrollmentStatus;
-import com.poschoolenrollmentcourse.producer.EnrollmentCreatedProducer;
 import com.poschoolenrollmentcourse.service.EnrollmentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,22 +23,17 @@ public class EnrollmentCreateConsumer {
     private static final Logger logger = LoggerFactory.getLogger(EnrollmentCreateConsumer.class);
 
     @KafkaListener(topics = "enrollment_create", groupId = "enrollment")
-    public void consume(String jsonPayload) {
+    public void consume(String jsonObject) {
         try {
-            Map<String, Long> data = objectMapper.readValue(jsonPayload, new TypeReference<>() {
-            });
-            Long studentId = data.get("studentId");
-            Long courseId = data.get("courseId");
+            var enrollment = objectMapper.readValue(jsonObject, Enrollment.class);
 
-            logger.info("Listener: enrollment_create: " + jsonPayload);
+            logger.info("consumer: enrollment_create: " + jsonObject);
 
-            Enrollment enrollment = Enrollment.builder()
-                    .studentId(studentId)
-                    .courseId(courseId)
-                    .semester("학기")
-                    .build();
-
-//            enrollmentService.state(enrollment);
+            if (enrollment.getEnrollmentStatus().equals(EnrollmentStatus.REQUEST)) {
+                enrollmentService.save(enrollment);
+            } else if (enrollment.getEnrollmentStatus().equals(EnrollmentStatus.CANCEL)) {
+                enrollmentService.cancel(enrollment);
+            }
         } catch (Exception e) {
 
         }

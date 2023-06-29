@@ -22,4 +22,12 @@ public class Enrollment {
         this.semester = semester;
         this.enrollmentStatus = enrollmentStatus;
     }
+
+    public void setEnrollmentStatus(EnrollmentStatus enrollmentStatus) {
+        this.enrollmentStatus = enrollmentStatus;
+    }
+
+    public void setEnrollmentId(Long enrollmentId) {
+        this.enrollmentId = enrollmentId;
+    }
 }
