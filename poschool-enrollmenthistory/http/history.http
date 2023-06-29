@@ -1,0 +1,10 @@
+### 수강 신청 내역 로깅
+POST http://localhost:8082/savehistory
+Content-Type: application/json
+
+{
+  "studentId": 1,
+  "courseId": 1,
+  "semester": "1학기",
+  "enrollmentHistoryStatus": "SUCCESS"
+}
