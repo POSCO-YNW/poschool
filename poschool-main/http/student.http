@@ -22,5 +22,5 @@ DELETE http://localhost:8080/course
 Content-Type: application/json
 
 {
-  "enrollmentId": 1
+  "enrollmentId": 14
 }
