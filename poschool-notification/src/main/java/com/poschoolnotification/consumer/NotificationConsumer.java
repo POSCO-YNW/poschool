@@ -2,7 +2,6 @@ package com.poschoolnotification.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poschoolnotification.domain.dto.NotificationRequest;
-import com.poschoolnotification.domain.type.NotificationType;
 import com.poschoolnotification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;

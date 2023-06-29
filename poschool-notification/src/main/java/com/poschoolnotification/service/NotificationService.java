@@ -2,7 +2,6 @@ package com.poschoolnotification.service;
 
 import com.poschoolnotification.consumer.NotificationConsumer;
 import com.poschoolnotification.domain.dto.NotificationRequest;
-import com.poschoolnotification.domain.type.NotificationType;
 import org.springframework.stereotype.Service;
 
 @Service
