@@ -1,7 +1,7 @@
 package com.poschoolmain.student.controller;
 
-import com.poschoolmain.domain.Course;
-import com.poschoolmain.domain.Enrollment;
+import com.poschoolmain.dto.Course;
+import com.poschoolmain.dto.Enrollment;
 import com.poschoolmain.student.domain.type.EnrollmentStatus;
 import com.poschoolmain.student.service.EnrollmentKafkaService;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;

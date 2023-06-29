@@ -1,6 +1,6 @@
 package com.poschoolmain.student.service;
 
-import com.poschoolmain.domain.Enrollment;
+import com.poschoolmain.dto.Enrollment;
 import com.poschoolmain.student.producer.EnrollmentCreatedProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
