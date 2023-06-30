@@ -1,6 +1,7 @@
 package com.poschoolmain.student.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.poschoolmain.dto.Notification;
 import com.poschoolmain.student.producer.EnrollmentCreatedProducer;
 import com.poschoolmain.student.service.StudentService;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +24,12 @@ public class NotificationCreateConsumer {
     @KafkaListener(topics = "notification_create", groupId = "student")
     public void consume(String jsonObject) {
         try {
-            // JSON 파싱
-            JSONObject parsing = new JSONObject(jsonObject);
 
-            // "message" 필드의 값 가져오기
-            String message = parsing.getString("message");
+            var notification = objectMapper.readValue(jsonObject, Notification.class);
 
-            logger.info("consumer: notification_create: " + message);
+            logger.info("consumer: notification_create: " + notification);
 
-            studentService.requestResult(message);
+            studentService.requestResult(notification);
         } catch (Exception e) {
 
         }

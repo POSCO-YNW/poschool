@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -17,12 +20,14 @@ public class Notification {
     private Long studentId;
     private Long courseId;
     private String notificationStatus;
+    private LocalDateTime createdAt;
 
     @Builder
-    public Notification(Long notificationId, Long studentId, Long courseId, String notificationStatus) {
+    public Notification(Long notificationId, Long studentId, Long courseId, String notificationStatus, LocalDateTime createdAt) {
         this.notificationId = notificationId;
         this.studentId = studentId;
         this.courseId = courseId;
         this.notificationStatus = notificationStatus;
+        this.createdAt = createdAt;
     }
 }

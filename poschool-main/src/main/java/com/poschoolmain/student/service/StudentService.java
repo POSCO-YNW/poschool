@@ -1,5 +1,6 @@
 package com.poschoolmain.student.service;
 
+import com.poschoolmain.dto.Notification;
 import com.poschoolmain.student.domain.Student;
 import com.poschoolmain.student.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,9 @@ public class StudentService {
         }
     }
 
-    public String requestResult(String message) {
-        System.out.println("수강신청 결과: " + message);
+    public String requestResult(Notification notification) {
+        String message = notification.getCreatedAt() + ", 수강신청 결과: " + notification.getNotificationStatus().getDescription();
+        System.out.println(message);
         return message;
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 public class NotificationRequest {
     private Long enrollmentId;
     private Long studentId;
+    private Long courseId;
     private String semester;
     private String enrollmentStatus;
 }
