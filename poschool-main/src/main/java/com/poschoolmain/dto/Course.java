@@ -1,11 +1,8 @@
-package com.poschoolmain.domain;
+package com.poschoolmain.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@Getter
 @Data
 public class Course {
     private Long courseId;

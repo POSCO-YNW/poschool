@@ -24,4 +24,9 @@ public class StudentService {
             return null;
         }
     }
+
+    public String requestResult(String message) {
+        System.out.println("수강신청 결과: " + message);
+        return message;
+    }
 }

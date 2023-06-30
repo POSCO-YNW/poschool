@@ -1,4 +1,4 @@
-package com.poschoolmain.domain.type;
+package com.poschoolmain.dto.type;
 
 public enum EnrollmentStatus {
     REQUEST("신청"), SUCCESS("성공"), FAIL("실패"), CANCEL("취소"), WAITING("대기");

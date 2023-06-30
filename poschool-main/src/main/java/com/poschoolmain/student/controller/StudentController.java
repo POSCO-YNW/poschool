@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/student")
 public class StudentController {
@@ -20,6 +20,7 @@ public class StudentController {
     public String save() {
         return "signup";
     }
+
 
     @PostMapping("/save")
     public ResponseEntity<String> processSave(@RequestBody HashMap<String, Object> map) {
@@ -45,7 +46,7 @@ public class StudentController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "pack/login";
     }
 
     @PostMapping("/login")
@@ -55,6 +56,6 @@ public class StudentController {
             return "redirect:/student/login";
         session.setAttribute("loginStudent", student);
 
-        return "course/list";
+        return "login";
     }
 }
