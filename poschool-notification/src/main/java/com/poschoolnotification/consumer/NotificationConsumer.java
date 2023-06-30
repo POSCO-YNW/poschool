@@ -6,6 +6,7 @@ import com.poschoolnotification.producer.NotificationCreatedProducer;
 import com.poschoolnotification.service.NotificationKafkaService;
 import com.poschoolnotification.service.NotificationService;
 import lombok.RequiredArgsConstructor;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -21,10 +22,13 @@ public class NotificationConsumer {
     private static final Logger logger = LoggerFactory.getLogger(NotificationCreatedProducer.class);
 
     @KafkaListener(topics = "enrollment_history_create", groupId = "notification")
-    public void consume(String jsonObject) {
+    public void consume(String jsonObject, ConsumerRecord<String, String> record) {
         try {
             NotificationRequest status = objectMapper.readValue(jsonObject, NotificationRequest.class);
             logger.info("consumer: enrollment_history_create: " + jsonObject);
+
+            logger.info("consumer: enrollment_create -, Partition: {}, Offset: {}: {}",
+                    record.partition(), record.offset(), record.value());
 
             // NotificationService로 상태 정보 전달
             notificationKafkaService.sendNotification(status);

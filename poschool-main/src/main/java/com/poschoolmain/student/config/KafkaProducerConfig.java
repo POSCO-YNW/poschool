@@ -25,7 +25,6 @@ public class KafkaProducerConfig {
         return new DefaultKafkaProducerFactory<>(config);
     }
 
-
     // 카프카 템플릿 설정
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
