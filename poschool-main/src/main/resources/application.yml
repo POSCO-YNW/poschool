@@ -14,7 +14,10 @@ spring:
         format_sql: true
     show-sql: true
     generate-ddl: false
-  mvc:
-    view:
-      suffix: .jsp
-      prefix: /WEB-INF
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

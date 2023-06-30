@@ -14,7 +14,8 @@ Content-Type: application/json
 {
   "studentId": 1,
   "courseId": 1,
-  "semester": "2023학년 1학기"
+  "semester": "2023학년 1학기",
+  "enrollmentStatus": "REQUEST"
 }
 
 ### 과목 취소

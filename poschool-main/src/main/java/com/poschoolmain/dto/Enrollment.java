@@ -13,6 +13,9 @@ public class Enrollment {
     private String semester;
     private String enrollmentStatus;
 
+    public Enrollment() {
+    }
+
     @Builder
     public Enrollment(Long enrollmentId, Long studentId, Long courseId, String semester, String enrollmentStatus) {
         this.enrollmentId = enrollmentId;
