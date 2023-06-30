@@ -37,7 +37,7 @@ public class CourseController {
         Enrollment enrollment = null;
         try {
             enrollment = objectMapper.readValue(json, Enrollment.class);
-
+            enrollment.setEnrollmentStatus("REQUEST");
 
             enrollmentKafkaService.requestCreateEnrollment(enrollment);
 
@@ -45,6 +45,23 @@ public class CourseController {
         } catch (JsonProcessingException e) {
             return ResponseEntity.status(500).build();
         }
+    }
+
+    @PostMapping("/auto")
+    public ResponseEntity<String> autoAddCourse() {
+        for (int i = 1; i < 500; i++) {
+            Enrollment enrollment = Enrollment.builder()
+                    .studentId((long) i)
+                    .courseId(1L)
+                    .semester("1학기")
+                    .enrollmentStatus("REQUEST")
+                    .build();
+
+            enrollmentKafkaService.requestCreateEnrollment(enrollment);
+        }
+
+
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping

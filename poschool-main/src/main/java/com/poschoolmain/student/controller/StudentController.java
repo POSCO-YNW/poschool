@@ -32,6 +32,18 @@ public class StudentController {
         return ResponseEntity.ok("Student saved successfully.");
     }
 
+    @PostMapping("/auto/save")
+    public ResponseEntity<String> processAutoSave() {
+        for (int i = 0; i < 500; i++) {
+            studentService.save(Student.builder()
+                    .studentName("이름" + i)
+                    .studentNumber("학번" + i)
+                    .build());
+        }
+
+        return ResponseEntity.ok("Student saved successfully.");
+    }
+
 //    @PostMapping("/save")
 //    public String processSave(@RequestParam("studentName") String studentName,
 //                              @RequestParam("studentNumber") String studentNumber) {

@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
   "courseName": "현대사회",
-  "maxCount": 30
+  "maxCount": 100
 }
 
 ### 과목들 조회

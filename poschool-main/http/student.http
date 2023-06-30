@@ -7,6 +7,10 @@ Content-Type: application/json
   "studentNumber": "Asdsad"
 }
 
+### 학생 500명 자동 가입
+POST http://localhost:8080/student/auto/save
+Content-Type: application/json
+
 ### 과목 신청
 POST http://localhost:8080/course
 Content-Type: application/json
@@ -17,6 +21,10 @@ Content-Type: application/json
   "semester": "2023학년 1학기",
   "enrollmentStatus": "REQUEST"
 }
+
+### 과목 자동 신청
+POST http://localhost:8080/course/auto
+Content-Type: application/json
 
 ### 과목 취소
 DELETE http://localhost:8080/course
