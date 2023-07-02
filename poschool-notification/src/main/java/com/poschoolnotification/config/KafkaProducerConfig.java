@@ -18,7 +18,7 @@ public class KafkaProducerConfig {
     @Bean
     public ProducerFactory<String, String> producerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "3.38.251.121:9092, 52.79.100.175:9092, 43.201.148.85:9092");
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);     //토픽
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);   //데이터
 
