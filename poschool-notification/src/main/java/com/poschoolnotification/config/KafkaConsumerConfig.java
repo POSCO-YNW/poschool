@@ -17,7 +17,7 @@ public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, String> consumerFactory(){
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "3.38.251.121:9092, 52.79.100.175:9092, 43.201.148.85:9092");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "13.209.85.86:9092, 3.38.246.195:9092, 13.125.173.63:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "notification");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
