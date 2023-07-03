@@ -16,7 +16,7 @@ POST http://localhost:8080/course
 Content-Type: application/json
 
 {
-  "studentId": 20,
+  "studentId": 550,
   "courseId": 1,
   "semester": "2023학년 1학기",
   "enrollmentStatus": "REQUEST"

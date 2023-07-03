@@ -25,9 +25,9 @@ public class NotificationConsumer {
     public void consume(String jsonObject, ConsumerRecord<String, String> record) {
         try {
             NotificationRequest status = objectMapper.readValue(jsonObject, NotificationRequest.class);
-            logger.info("consumer: enrollment_history_create: " + jsonObject);
+//            logger.info("consumer: enrollment_history_create: " + jsonObject);
 
-            logger.info("consumer: enrollment_create -, Partition: {}, Offset: {}: {}",
+            logger.info("consumer: enrollment_history_create -, Partition: {}, Offset: {}: {}",
                     record.partition(), record.offset(), record.value());
 
             // NotificationService로 상태 정보 전달
